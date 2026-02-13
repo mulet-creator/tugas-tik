@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+input[type="image"] {
+    position: relative;
+    width: min(20vw, 100px);
+    height: min(20vw, 100px);
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+h1 {
+    font-size: clamp(1.5em, 5vw, 2em);
+}
+
+h2 {
+    font-size: clamp(1.2em, 4vw, 1.5em);
+}
+
+h3 {
+    font-size: clamp(1em, 3vw, 1.2em);
+}
+
+#links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Small devices (phones, 480px and up) */
+@media (max-width: 480px) {
+    input[type="image"] {
+        width: min(25vw, 80px);
+        height: min(25vw, 80px);
+        margin-bottom: 15px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    h3 {
+        font-size: 1em;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    input[type="image"] {
+        width: min(20vw, 100px);
+        height: min(20vw, 100px);
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.4em;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    input[type="image"] {
+        width: 100px;
+        height: 100px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    h3 {
+        font-size: 1.2em;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    input[type="image"] {
+        width: 120px;
+        height: 120px;
+    }
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.4em;
+    }
+}
+
+/* Loading screen */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Timer */
+#timer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    z-index: 1000;
+}

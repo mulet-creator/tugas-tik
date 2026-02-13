@@ -1,0 +1,118 @@
+<html>
+<head>
+    <title>biodata</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body style="background-image: url('YTTA.jpg'); background-size: cover; background-attachment: fixed;">
+
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <div id="timer">00:00:00</div>
+
+    <input type="image" src="YTTA2.png" alt="" id="movableImage">
+     <h1>MOH.NABILUR RO'YI</h1>
+      <h2>web tugas plajaran TIK </h2>
+<div id="links">
+       <h3>
+        <a href="https://www.tiktok.com/@anonim883197">Tiktok Saya</a></h3>
+         <h3>
+        <a href="https://www.instagram.com/@Garminn">Ig ganteng</a></h3>
+</div>
+    <script>
+        // Hide loading screen after page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+            }, 1000); // Delay for 1 second to show animation
+        });
+
+        // Animasi awal untuk heading
+        anime({
+            targets: 'h1',
+            translateY: [-50, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            easing: 'easeOutExpo'
+        });
+
+        anime({
+            targets: 'h2',
+            translateY: [-30, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            delay: 200,
+            easing: 'easeOutExpo'
+        });
+
+        anime({
+            targets: 'h3',
+            translateY: [-20, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            delay: 400,
+            easing: 'easeOutExpo'
+        });
+
+        const image = document.getElementById('movableImage');
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+
+        image.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            initialX = image.offsetLeft;
+            initialY = image.offsetTop;
+            // Animasi saat disentuh
+            anime({
+                targets: image,
+                scale: 1.1,
+                duration: 200,
+                easing: 'easeOutExpo'
+            });
+            e.preventDefault();
+        });
+
+        image.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const touch = e.touches[0];
+            const dx = touch.clientX - startX;
+            const dy = touch.clientY - startY;
+            image.style.left = (initialX + dx) + 'px';
+            image.style.top = (initialY + dy) + 'px';
+            e.preventDefault();
+        });
+
+        image.addEventListener('touchend', () => {
+            isDragging = false;
+            // Animasi kembali ke ukuran normal
+            anime({
+                targets: image,
+                scale: 1,
+                duration: 200,
+                easing: 'easeOutExpo'
+            });
+        });
+
+        // Real-time clock (WIB - Western Indonesian Time, UTC+7)
+        function updateClock() {
+            const now = new Date();
+            const wibTime = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+            const hours = String(wibTime.getUTCHours()).padStart(2, '0');
+            const minutes = String(wibTime.getUTCMinutes()).padStart(2, '0');
+            const seconds = String(wibTime.getUTCSeconds()).padStart(2, '0');
+            document.getElementById('timer').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // Update clock every second
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
+    </script>
+
+</body>
+</html>
